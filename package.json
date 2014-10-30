@@ -1,0 +1,37 @@
+{
+  "name": "angular-browserify",
+  "version": "0.0.1",
+  "description": "angular, browserify, and typescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjw56/angular-browserify"
+  },
+  "keywords": [
+    "angular",
+    "browserify",
+    "typescript"
+  ],
+  "author": "Mike Wilcox",
+  "license": "MIT",
+  "homepage": "https://github.com/mjw56/angular-browserify",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^1.3.7",
+    "browserify": "^6.0.2",
+    "country-data": "0.0.14",
+    "del": "^0.1.3",
+    "envify": "^3.0.0",
+    "gulp": "^3.8.8",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-changed": "^1.0.0",
+    "gulp-csso": "^0.2.9",
+    "gulp-notify": "^1.6.0",
+    "gulp-uglify": "^1.0.1",
+    "superagent": "^0.18.2",
+    "tsify": "^0.5.2",
+    "underscore": "^1.7.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.2"
+  }
+}
