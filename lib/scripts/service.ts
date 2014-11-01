@@ -6,11 +6,6 @@ var countries  = require('country-data').countries;
 module FooBar {
 
   export class Test {
-    public _whoAmI: string;
-
-    constructor() {
-      this._whoAmI = "I am a service";
-    }
 
     /**
     * Say Hi
