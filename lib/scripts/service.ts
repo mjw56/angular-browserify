@@ -1,27 +1,38 @@
 /// <reference path="../typings/underscore.d.ts" />
 
-var _ = require('underscore');
+var _ = <UnderscoreStatic>require('underscore');
 var countries  = require('country-data').countries;
 
 module FooBar {
 
-  export class Test {
-
+  export interface ITestService {
     /**
     * Say Hi
     */
-    public sayHello() {
-      return "hello world";
-    }
+    sayHello(): string;
 
     /**
     * Get some countries
     */
-    public getCountries() {
+    getCountries(): any;
+  }
+
+  export class TestService implements ITestService {
+
+
+    sayHello() {
+      return "hello world";
+    }
+
+
+    getCountries() {
         return _.pluck(countries.all, 'name');
     }
 
   }
+
+  angular.module('foobar.services', [])
+    .service('TestService', TestService);
 }
 
-export = FooBar;
+//export = FooBar;

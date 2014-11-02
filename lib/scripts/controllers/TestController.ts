@@ -1,6 +1,5 @@
 /// <reference path='../../typings/angular.d.ts' />
-
-import service = require('../service');
+/// <reference path='../app.ts' />
 
 module FooBar {
 
@@ -11,12 +10,9 @@ module FooBar {
 
   class TestController {
 
-    static $inject = ['$scope'];
+    static $inject = ['$scope', 'TestService'];
 
-    constructor($scope: TestVM) {
-
-      var svc = new service.Test;
-
+    constructor($scope: TestVM, svc: TestService) {
       $scope.helloWorld = svc.sayHello();
       $scope.countries = svc.getCountries();
     }
