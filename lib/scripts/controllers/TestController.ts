@@ -1,5 +1,4 @@
-/// <reference path='../../typings/angular.d.ts' />
-/// <reference path='../app.ts' />
+/// <reference path='../../typings/base.d.ts' />
 
 module FooBar {
 

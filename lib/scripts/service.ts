@@ -34,5 +34,3 @@ module FooBar {
   angular.module('foobar.services', [])
     .service('TestService', TestService);
 }
-
-//export = FooBar;
