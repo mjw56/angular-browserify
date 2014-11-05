@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     csso = require('gulp-csso'),
     autoprefixer = require('gulp-autoprefixer'),
     browserify = require('browserify'),
+    //reactify = require('reactify'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
@@ -19,7 +20,9 @@ var gulp = require('gulp'),
       ts: ['./lib/scripts/app.ts',
         './lib/scripts/service.ts',
         './lib/scripts/controllers/TestController.ts',
-        './lib/scripts/directives/TestDirective.ts'],
+        './lib/scripts/directives/TestDirective.ts',
+        './lib/scripts/react-components/TestComponent.ts'],
+      jsx: [],
       css: ['lib/styles/main.css', 'lib/styles/bootstrap.min.css'],
       bundle: 'app.js',
       distJs: 'dist/js',
@@ -39,7 +42,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('watchify', function() {
-  var bundler = watchify(browserify(p.ts, watchify.args));
+  var bundler = watchify(browserify(p.ts.concat(p.jsx), watchify.args));
 
   function rebundle() {
     return bundler
@@ -51,14 +54,16 @@ gulp.task('watchify', function() {
   }
 
   bundler
-  .plugin('tsify', { noImplicitAny: true })
+  .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
+  //.transform(reactify)
   .on('update', rebundle);
   return rebundle();
 });
 
 gulp.task('browserify', function() {
   browserify(p.ts)
-    .plugin('tsify', { noImplicitAny: true })
+    .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
+    //.transform(reactify)
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())

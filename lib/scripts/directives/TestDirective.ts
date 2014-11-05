@@ -1,7 +1,5 @@
 /// <reference path='../../typings/base.d.ts' />
 
-var React = require('react');
-
 module FooBar {
 
   interface ITestViewModel {
@@ -14,15 +12,13 @@ module FooBar {
       element: ng.IAugmentedJQuery,
       attrs: ng.IAttributes) {
 
-      // use React
+      //React.renderComponent(<TestComponent />, document.getElementById('component'));
 
     }
 
     return {
       restrict: 'A',
-      scope: {
-
-      },
+      scope: {},
       replace: true,
       transclude: true,
       link: linker
