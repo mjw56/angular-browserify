@@ -1,14 +1,14 @@
 /// <reference path='../../typings/node.d.ts' />
 
-var React = require('react');
-var TypedReact = require("typed-react");
+import React = require('react');
+import TypedReact = require("typed-react");
 
 export interface ComponentProps {
-    tickInterval: number;
+    bar: number;
 }
 
 interface ComponentState {
-    ticksElapsed: number;
+    baz: number;
 }
 
 class Component extends TypedReact.Component<ComponentProps, ComponentState> {
