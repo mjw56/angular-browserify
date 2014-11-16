@@ -19,7 +19,7 @@ class Component extends TypedReact.Component<ComponentIProps, {}> {
     componentWillUnmount() {}
 
     render() {
-        return React.DOM.div(null, "My Component");
+        return React.DOM.h1(null, "heyoo");
     }
 }
 
