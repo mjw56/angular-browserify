@@ -1,4 +1,8 @@
 /// <reference path='../../typings/base.d.ts' />
+/// <reference path='../react-components/TestComponent.ts' />
+
+import React = require('react');
+import MyComponent = require('../react-components/TestComponent');
 
 module FooBar {
 
@@ -12,7 +16,14 @@ module FooBar {
       element: ng.IAugmentedJQuery,
       attrs: ng.IAttributes) {
 
-      //React.renderComponent(<TestComponent />, document.getElementById('component'));
+      init();
+
+      function init() {
+        $log.debug('React imported component', MyComponent);
+      }
+
+
+      //React.renderComponent(<MyComponent />, document.getElementById('component'));
 
     }
 
