@@ -5,25 +5,22 @@ var gulp = require('gulp'),
     csso = require('gulp-csso'),
     autoprefixer = require('gulp-autoprefixer'),
     browserify = require('browserify'),
-    //reactify = require('reactify'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     tsify = require('tsify'),
-    envify = require('envify'),
-    uglify = require('gulp-uglify'),
     del = require('del'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
+    concatCss = require('gulp-concat-css'),
     reload = browserSync.reload,
     p = {
       ts: ['./lib/scripts/app.ts',
         './lib/scripts/service.ts',
         './lib/scripts/controllers/TestController.ts',
-        './lib/scripts/directives/TestDirective.ts',
-        './lib/scripts/react-components/TestComponent.ts'],
+        './lib/scripts/directives/TestDirective.ts'],
       jsx: [],
-      css: ['lib/styles/main.css', 'lib/styles/bootstrap.min.css'],
+      css: ['lib/styles/main.css'],
       bundle: 'app.js',
       distJs: 'dist/js',
       distCss: 'dist/css'
@@ -55,7 +52,6 @@ gulp.task('watchify', function() {
 
   bundler
   .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
-  //.transform(reactify)
   .on('update', rebundle);
   return rebundle();
 });
@@ -63,11 +59,9 @@ gulp.task('watchify', function() {
 gulp.task('browserify', function() {
   browserify(p.ts)
     .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
-    //.transform(reactify)
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
-    //.pipe(uglify())
     .pipe(gulp.dest(p.distJs));
 });
 
@@ -76,6 +70,7 @@ gulp.task('styles', function() {
     .pipe(changed(p.distCss))
     .pipe(autoprefixer('last 1 version'))
     .pipe(csso())
+    .pipe(concatCss('bundle.css'))
     .pipe(gulp.dest(p.distCss))
     .pipe(reload({stream: true}));
 });
@@ -85,7 +80,7 @@ gulp.task('watchTask', function() {
 });
 
 gulp.task('watch', ['clean'], function() {
-  gulp.start(['browserSync', 'watchify']);
+  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles']);
 });
 
 gulp.task('build', ['clean'], function() {
