@@ -76,7 +76,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watchTask', function() {
-  gulp.watch(p.scss, ['styles']);
+  gulp.watch(p.css, ['styles']);
 });
 
 gulp.task('watch', ['clean'], function() {
