@@ -16,9 +16,40 @@ module FooBar {
       element: ng.IAugmentedJQuery,
       attrs: ng.IAttributes) {
 
-      React.render(
-        React.createElement(component.MyComponent, null, null),
-        document.getElementById('component'));
+      var toggled = false;
+
+      function render() {
+
+        React.render(
+          React.DOM.div(
+            null,
+            React.DOM.h1(null, 'heyy!'),
+            React.DOM.form(
+              null,
+              'Your name is ',
+              React.DOM.input({
+                type: 'text',
+                placeholder: 'Your name here'
+              })
+            ),
+            React.DOM.div(
+              null,
+              React.DOM.h1({
+                className: toggled ? 'red' : 'blue'
+              }, 'Hello, world!'),
+              React.DOM.button({
+                onClick: function() {
+                  toggled = !toggled;
+                  render();
+                }
+              }, 'Toggle color')
+            ),
+            React.createElement(component.MyComponent, null, null)
+          ),
+          document.getElementById('component'));
+        }
+
+        render();
 
     }
 
