@@ -31,7 +31,7 @@
     "gulp-notify": "^1.6.0",
     "gulp-uglify": "^1.0.1",
     "react": "^0.12.0",
-    "reactify": "^0.15.2",
+    "reactify": "^0.17.0",
     "superagent": "^0.18.2",
     "tsify": "^0.5.2",
     "typed-react": "^2.1.1",
