@@ -23,4 +23,4 @@ class Component extends TypedReact.Component<ComponentIProps, {}> {
     }
 }
 
-export var MyComponent = TypedReact.createClass<ComponentIProps, {}>(React.createClass, Component);
+export var MyComponent = TypedReact.createClass(Component);
