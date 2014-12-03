@@ -44,7 +44,7 @@ module FooBar {
                 }
               }, 'Toggle color')
             ),
-            React.createElement(component.MyComponent, null, null)
+            React.createElement(component.MyComponent, { title: 'A Custom Component'}, null)
           ),
           document.getElementById('component'));
         }
