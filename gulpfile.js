@@ -51,14 +51,14 @@ gulp.task('watchify', function() {
   }
 
   bundler
-  .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
+  .plugin('tsify', { noImplicitAny: false, module: 'commonjs' })
   .on('update', rebundle);
   return rebundle();
 });
 
 gulp.task('browserify', function() {
   browserify(p.ts)
-    .plugin('tsify', { noImplicitAny: true, module: 'commonjs' })
+    .plugin('tsify', { noImplicitAny: false, module: 'commonjs' })
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
