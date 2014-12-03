@@ -17,6 +17,7 @@ module FooBar {
       attrs: ng.IAttributes) {
 
       var toggled = false;
+      var counter = 0;
 
       function render() {
 
@@ -44,7 +45,16 @@ module FooBar {
                 }
               }, 'Toggle color')
             ),
-            React.createElement(component.MyComponent, { title: 'A Custom Component'}, null)
+            React.DOM.div(
+              null,
+              React.createElement(component.MyComponent, { counter: counter}, null),
+              React.DOM.button({
+                onClick: function() {
+                  counter += 1;
+                  render();
+                }
+              }, 'Increment')
+            )
           ),
           document.getElementById('component'));
         }

@@ -5,7 +5,7 @@ import React = require('react');
 import TypedReact = require("typed-react");
 
 export interface ComponentIProps {
-    title?: string;
+    counter?: string;
 }
 
 class Component extends TypedReact.Component<ComponentIProps, {}> {
@@ -19,7 +19,7 @@ class Component extends TypedReact.Component<ComponentIProps, {}> {
     componentWillUnmount() {}
 
     render() {
-        return React.DOM.h1(null, "heyoo " + this.props.title);
+        return React.DOM.h1(null, "Mah counter: " + this.props.counter);
     }
 }
 
