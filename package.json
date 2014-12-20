@@ -30,7 +30,7 @@
     "gulp-csso": "^0.2.9",
     "gulp-notify": "^1.6.0",
     "gulp-uglify": "^1.0.1",
-    "react": "^0.12.1",
+    "react": "^0.12.2",
     "reactify": "^0.17.0",
     "superagent": "^0.18.2",
     "tsify": "^0.6.4",
